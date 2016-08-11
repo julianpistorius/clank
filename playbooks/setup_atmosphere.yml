@@ -27,7 +27,7 @@
         APP_BASE_DIR: "{{ ATMOSPHERE_LOCATION }}",
         REQUIREMENTS_FILE_NAME: 'dev_requirements.txt',
         VIRTUAL_ENV: "{{ VIRTUAL_ENV_ATMOSPHERE }}",
-        PIP_EXTRA_ARGS: '--no-cache-dir',
+        #PIP_EXTRA_ARGS: '--no-cache-dir',
         tags: ['atmosphere', 'pip-install-requirements']}
 
     - { role: app-config-logging,

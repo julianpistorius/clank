@@ -15,7 +15,7 @@
 
 - name: install initial packages packages
   action: >
-    {{ ansible_pkg_mgr }} name={{ item }} state=latest update_cache=yes
+    {{ ansible_pkg_mgr }} name={{ item }} state=latest update_cache=no
   with_items: "{{ INITIAL_PACKAGES.packages }}"
   tags: install, apt-install
 
@@ -33,11 +33,6 @@
   apt_repository: repo={{ item }} state=present
   with_items: "{{ APT_REPOSITORIES_TO_ADD.packages }}"
   when: ansible_distribution == "Ubuntu" 
-
-- name: update cache as a separate step
-  apt: update_cache=yes
-  when: ansible_distribution == "Ubuntu"
-  tags: apt-install
 
 - name: install dev packages packages
   action: >
